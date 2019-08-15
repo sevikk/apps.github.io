@@ -1637,6 +1637,7 @@ let ChangePasswordComponent = class ChangePasswordComponent {
     constructor(store, activateRoute) {
         this.store = store;
         this.activateRoute = activateRoute;
+        this.isLoading = false;
     }
     ngOnInit() {
         this.changePasswordForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
@@ -1852,7 +1853,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiUrl: "http://localhost:3000/api"
+    apiUrl: "https://ngtravelapp.herokuapp.com/api" // https://ngtravelapp.herokuapp.com/api
 };
 /*
  * For easier debugging in development mode, you can import the following file
