@@ -4,8 +4,7 @@ exports.createPost = (req, res, next) => {
   console.log(req.protocol);
   console.log(req.get("host"));
   
-  
-  
+
   const url = req.protocol + "://" + req.get("host");
   console.log(url);
   const post = new Post({
