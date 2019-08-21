@@ -52,7 +52,7 @@ module.exports = "<h1 mat-dialog-title>An Error Occurred!</h1>\n<div mat-dialog-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <span>\n    <a routerLink=\"/\">My App</a>\n  </span>\n  <span class=\"spacer\"></span>\n  <div *ngIf=\"userIsAuthenticated\" class=\"user\">\n    <div class=\"user-block\">\n      <button mat-button [matMenuTriggerFor]=\"beforeMenu\">\n          <img [src]=\"user.image\" alt=\"\">\n          {{user?.name}}\n      </button>\n    </div>\n    <mat-menu #beforeMenu=\"matMenu\" xPosition=\"before\">\n      <li mat-menu-item routerLink=\"/create\" routerLinkActive=\"mat-accent\">\n        New post\n      </li>\n      <li mat-menu-item routerLink=\"/profile\" routerLinkActive=\"mat-accent\">\n        Edit profile\n      </li>\n      <!-- <li mat-menu-item routerLink=\"/forgot\" routerLinkActive=\"mat-accent\">\n        Reset password\n      </li> -->\n      <li mat-menu-item (click)=\"onLogout()\">\n        Logout\n      </li>\n    </mat-menu>\n  </div>\n  <ul *ngIf=\"!userIsAuthenticated\">\n    <li >\n      <a mat-button routerLink=\"/auth/login\" routerLinkActive=\"mat-accent\">Login</a>\n    </li>\n    <li>\n      <a mat-button routerLink=\"/auth/signup\" routerLinkActive=\"mat-accent\">Signup</a>\n    </li>\n  </ul>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n  <span>\n    <a routerLink=\"/\">My App</a>\n  </span>\n  <span class=\"spacer\"></span>\n  <ul  *ngIf=\"userIsAuthenticated\" class=\"header-menu\">\n    <li >\n      <a mat-button routerLink=\"/posts\" routerLinkActive=\"mat-accent\">\n        All posts\n      </a>\n    </li>\n    <li >\n      <a mat-button routerLink=\"/myposts\" routerLinkActive=\"mat-accent\">  \n        My posts\n      </a>\n    </li>\n  </ul>\n  <span class=\"spacer\"></span>\n  <div *ngIf=\"userIsAuthenticated\" class=\"user\">\n    <div class=\"user-block\">\n      <button mat-button [matMenuTriggerFor]=\"beforeMenu\">\n          <img [src]=\"user.image\" alt=\"\">\n          {{user?.name}}\n      </button>\n    </div>\n    <mat-menu #beforeMenu=\"matMenu\" xPosition=\"before\">\n      <li mat-menu-item routerLink=\"/create\" routerLinkActive=\"mat-accent\">\n        New post\n      </li>\n      <li mat-menu-item routerLink=\"/profile\" routerLinkActive=\"mat-accent\">\n        Edit profile\n      </li>\n      <li mat-menu-item (click)=\"onLogout()\">\n        Logout\n      </li>\n    </mat-menu>\n  </div>\n  <ul *ngIf=\"!userIsAuthenticated\">\n    <li >\n      <a mat-button routerLink=\"/auth/login\" routerLinkActive=\"mat-accent\">Login</a>\n    </li>\n    <li>\n      <a mat-button routerLink=\"/auth/signup\" routerLinkActive=\"mat-accent\">Signup</a>\n    </li>\n  </ul>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -179,13 +179,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: "", component: _posts_post_list_post_list_component__WEBPACK_IMPORTED_MODULE_3__["PostListComponent"] },
+    { path: "", redirectTo: 'posts', pathMatch: 'full' },
+    { path: "posts", component: _posts_post_list_post_list_component__WEBPACK_IMPORTED_MODULE_3__["PostListComponent"] },
     { path: "create", component: _posts_post_create_post_create_component__WEBPACK_IMPORTED_MODULE_4__["PostCreateComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
     { path: "edit/:postId", component: _posts_post_create_post_create_component__WEBPACK_IMPORTED_MODULE_4__["PostCreateComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
     { path: "auth", loadChildren: () => __webpack_require__.e(/*! import() | auth-auth-module */ "auth-auth-module").then(__webpack_require__.bind(null, /*! ./auth/auth.module */ "./src/app/auth/auth.module.ts")).then(m => m.AuthModule) },
     { path: "profile", component: _user_edit_profile_edit_profile_component__WEBPACK_IMPORTED_MODULE_6__["EditProfileComponent"], canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]] },
     { path: "forgot", component: _user_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_8__["ForgotPasswordComponent"] },
     { path: "reset-password/:id", component: _user_change_password_change_password_component__WEBPACK_IMPORTED_MODULE_7__["ChangePasswordComponent"] },
+    { path: "myposts", component: _posts_post_list_post_list_component__WEBPACK_IMPORTED_MODULE_3__["PostListComponent"] }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -657,7 +659,7 @@ ErrorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\nul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: white;\n}\n\nul {\n  display: flex;\n}\n\n.spacer {\n  flex: 1 1 auto;\n}\n\n.user-block button {\n  padding: 5px 15px;\n}\n\n.user-block img {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGdCQUFnQjtFQUNoQixVQUFVO0VBQ1YsU0FBUztBQUNYOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsWUFBWTtFQUNaLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxudWwge1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDA7XG59XG5cbmEge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxudWwge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uc3BhY2VyIHtcbiAgZmxleDogMSAxIGF1dG87XG59XG5cbi51c2VyLWJsb2NrIGJ1dHRvbiB7XG4gIHBhZGRpbmc6IDVweCAxNXB4O1xufVxuXG4udXNlci1ibG9jayBpbWcge1xuICB3aWR0aDogNDBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG59XG4iXX0= */"
+module.exports = "\nul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  text-decoration: none;\n  color: white;\n}\n\nul {\n  display: flex;\n}\n\n.spacer {\n  flex: 1 1 auto;\n}\n\n.user-block button {\n  padding: 5px 15px;\n}\n\n.user-block img {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n}\n\n.header-menu {\n  float: left;\n}\n\n.header-menu li {\n  padding: 0 10px;\n  cursor: pointer;\n  outline: none;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGdCQUFnQjtFQUNoQixVQUFVO0VBQ1YsU0FBUztBQUNYOztBQUVBO0VBQ0UscUJBQXFCO0VBQ3JCLFlBQVk7QUFDZDs7QUFFQTtFQUNFLGFBQWE7QUFDZjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsWUFBWTtFQUNaLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGVBQWU7RUFDZixlQUFlO0VBQ2YsYUFBYTtBQUNmIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG51bCB7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn1cblxuYSB7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG51bCB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5zcGFjZXIge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cblxuLnVzZXItYmxvY2sgYnV0dG9uIHtcbiAgcGFkZGluZzogNXB4IDE1cHg7XG59XG5cbi51c2VyLWJsb2NrIGltZyB7XG4gIHdpZHRoOiA0MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbn1cblxuLmhlYWRlci1tZW51IHtcbiAgZmxvYXQ6IGxlZnQ7XG59XG5cbi5oZWFkZXItbWVudSBsaSB7XG4gIHBhZGRpbmc6IDAgMTBweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBvdXRsaW5lOiBub25lO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -936,6 +938,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../auth/auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var src_app_store_app_states__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/store/app.states */ "./src/app/store/app.states.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm2015/store.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
@@ -943,10 +947,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let PostListComponent = class PostListComponent {
-    constructor(postsService, authService, store) {
+    constructor(postsService, authService, store, route) {
         this.postsService = postsService;
         this.authService = authService;
         this.store = store;
+        this.route = route;
         this.posts = [];
         this.isLoading = false;
         this.totalPosts = 0;
@@ -966,10 +971,16 @@ let PostListComponent = class PostListComponent {
             this.isLoading = false;
             this.totalPosts = postData.postCount;
             this.posts = postData.posts;
+            if (this.route.snapshot.url[0] && this.route.snapshot.url[0].path === "myposts") {
+                this.posts = this.posts.filter(post => {
+                    return post.creatorEmail == this.currentUser.email;
+                });
+            }
         });
         this.getState.subscribe((state) => {
             this.userIsAuthenticated = state.isAuthenticated;
             this.userId = this.authService.getUserId();
+            this.currentUser = state.user;
         });
     }
     onChangedPage(pageData) {
@@ -993,7 +1004,8 @@ let PostListComponent = class PostListComponent {
 PostListComponent.ctorParameters = () => [
     { type: _posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"] },
     { type: _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
-    { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"] }
+    { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"] }
 ];
 PostListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

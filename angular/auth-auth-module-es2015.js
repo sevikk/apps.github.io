@@ -174,12 +174,9 @@ let LoginComponent = class LoginComponent {
             if (state) {
                 this.isLoading = false;
                 if (state.errorMessage) {
-                    const dialogRef = this.dialog.open(_modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_8__["ModalDialogComponent"], {
+                    this.dialog.open(_modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_8__["ModalDialogComponent"], {
                         width: '400px',
                         data: state.errorMessage
-                    });
-                    dialogRef.afterClosed().subscribe(result => {
-                        console.log('The dialog was closed');
                     });
                 }
             }

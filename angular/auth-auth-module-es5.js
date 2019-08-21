@@ -181,12 +181,9 @@ var LoginComponent = /** @class */ (function () {
             if (state) {
                 _this.isLoading = false;
                 if (state.errorMessage) {
-                    var dialogRef = _this.dialog.open(_modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_8__["ModalDialogComponent"], {
+                    _this.dialog.open(_modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_8__["ModalDialogComponent"], {
                         width: '400px',
                         data: state.errorMessage
-                    });
-                    dialogRef.afterClosed().subscribe(function (result) {
-                        console.log('The dialog was closed');
                     });
                 }
             }
