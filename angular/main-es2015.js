@@ -1874,7 +1874,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiUrl: "https://ngtravelapp.herokuapp.com/api" // http://localhost:3000/api https://ngtravelapp.herokuapp.com/api
+    apiUrl: "https://vsev-mean-travel-app-a7a18b2575b3.herokuapp.com/api" // http://localhost:3000/api https://ngtravelapp.herokuapp.com/api
 };
 /*
  * For easier debugging in development mode, you can import the following file
